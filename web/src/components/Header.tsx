@@ -13,7 +13,7 @@ function Header() {
   const navigate = useNavigate();
   useEffect(() => {});
   return (
-    <header className="flex justify-between items-center px-5 py-4 shadow-lg">
+    <header className="flex justify-between items-center h-[10vh] px-5 py-4 shadow-lg">
       <div
         onClick={() => {
           setCurrentMenu("/");

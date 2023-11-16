@@ -17,16 +17,18 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 
 function Main() {
   return (
-    <main className="w-screen lg:w-[80vw] h-screen">
+    <main className="w-screen h-screen">
       <BrowserRouter>
         <Header />
-        <section className="px-5">
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+        <section className="h-[90vh]  overflow-y-scroll">
+          <div className="px-[10vw]">
+            <Routes>
+              <Route path="/" element={<Homepage />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </div>
+          <Footer />
         </section>
-        <Footer />
       </BrowserRouter>
     </main>
   );
