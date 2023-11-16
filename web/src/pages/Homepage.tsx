@@ -5,8 +5,7 @@ function Homepage() {
     <div className="flex items-center justify-evenly gap-[10vw]">
       <div>
         <h1 className="font-bold text-4xl">
-          <span className="text-blue-900">Everything</span> is
-          <span className="text-rose-500"> POSSIBLE</span> with Hotel Synergy.
+          Best Hotel & Restaurant Management System.
         </h1>
         <div className="flex flex-col mt-5 gap-2">
           <span>Signup for a demo today!</span>
@@ -22,7 +21,7 @@ function Homepage() {
           </button>
         </div>
       </div>
-      <img src={HeroImage} alt="Hero image" />
+      <img className="hidden md:block" src={HeroImage} alt="Hero image" />
     </div>
   );
 }
