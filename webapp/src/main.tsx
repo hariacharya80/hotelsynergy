@@ -5,7 +5,9 @@ import Login from "./pages/Auth/Login";
 import "./assets/styles/global.css";
 import Reset from "./pages/Auth/Reset";
 import { Toaster } from "react-hot-toast";
-import AdminDashboard from "./pages/AdminDashboard/Dashboard";
+import AdminLayout from "./pages/AdminDashboard/AdminLayout";
+import AdminDashboardHome from "./pages/AdminDashboard/Dashboard";
+import StaffSettings from "./pages/AdminDashboard/StaffSettings";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -14,7 +16,22 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/reset" element={<Reset />} />
-        <Route path="/admin" element={<AdminDashboard />} />
+        <Route
+          path="/admin"
+          element={
+            <AdminLayout>
+              <AdminDashboardHome />
+            </AdminLayout>
+          }
+        />
+        <Route
+          path="/staff"
+          element={
+            <AdminLayout>
+              <StaffSettings />
+            </AdminLayout>
+          }
+        />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
