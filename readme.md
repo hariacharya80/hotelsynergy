@@ -4,7 +4,7 @@ Hotel Synergy is a complete hotel & restaurant management system built with MERN
 
 His repository contains different directory with each having it's own deployment in the web, desktop or mobile.
 
-### Main hotel synergy website:
+### Main Hotel Synergy (Website):
 
 📂 Path: `web/` <br/>
 ⭐ Live preview: https://www.hotelsynergy.net
@@ -13,6 +13,10 @@ His repository contains different directory with each having it's own deployment
 
 📂 Path: `webapp/` <br/>
 ⭐ Live preview: https://demo.hotelsynergy.net
+
+### Image Preview
+
+<img src="./web/public/mainss.png"/>
 
 ### Contribution
 
