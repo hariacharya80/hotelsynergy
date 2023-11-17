@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 function AdminDashboard() {
-  const { user } = UseAuth();
+  const { user, logout } = UseAuth();
   const navigate = useNavigate();
   useEffect(() => {
     if (!user) {
@@ -15,7 +15,13 @@ function AdminDashboard() {
       return navigate("/");
     }
   }, [user, navigate]);
-  return <div>AdminDashboard</div>;
+  return (
+    <div>
+      <button onClick={logout} className="bg-rose-500 p-2 rounded-md px-8">
+        Log out
+      </button>
+    </div>
+  );
 }
 
 export default AdminDashboard;
