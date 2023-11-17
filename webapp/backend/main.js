@@ -30,6 +30,7 @@ const startServer = async () => {
     console.log(
       "🎉 : Server started successfully at port " + process.env.SERVER_PORT
     );
+    createDemoStaffAndHotel();
   } else {
     console.log("😴 : No database instance connected, server terminated.");
     process.exit();
@@ -47,7 +48,7 @@ const createDemoStaffAndHotel = async () => {
     console.log("👉 : Adding demo hotel.");
     const date = new Date();
     try {
-      const demoHotel = await new HotelModel.create({
+      const demoHotel = await HotelModel.create({
         name: "Mero Hotel Ltd.",
         code: "001",
         phone: "9800000",
