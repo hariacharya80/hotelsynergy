@@ -8,7 +8,7 @@ import UseAuth from "../../hooks/UseAuth";
 
 function Login() {
   const navigate = useNavigate();
-  const { login } = UseAuth();
+  const { login, user } = UseAuth();
 
   const [loginInfo, setLoginInfo] = useState<LoginInfoType>({
     email: "",
@@ -20,6 +20,10 @@ function Login() {
 
   useEffect(() => {
     document.title = "Login | HotelSynergy";
+    if (user && user.role) {
+      toast.error("Already logged in.");
+      return navigate(`/${user.role}`);
+    }
   }, []);
 
   const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
@@ -36,9 +40,8 @@ function Login() {
     const loginResult = await login(loginInfo);
     setLoading(false);
     if (loginResult) {
-      // alert(loginResult);
+      return navigate(`/${user.role}`);
     }
-    // alert(loginResult);
   };
   return (
     <section className="absolute w-screen min-h-screen bg-slate-200 flex justify-center">

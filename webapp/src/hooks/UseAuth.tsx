@@ -13,16 +13,13 @@ function UseAuth() {
   const login = async (loginInfo: LoginInfoType) => {
     try {
       //send a network request.
-      const request = await fetch(
-        import.meta.env.VITE_BACKEND + "/auth/login",
-        {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(loginInfo),
-        }
-      );
+      const request = await fetch(import.meta.env.VITE_BACKEND + "auth/login", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(loginInfo),
+      });
       if (request.status === 200) {
         //handle successful response.
         toast.success("User logged in successfully.");

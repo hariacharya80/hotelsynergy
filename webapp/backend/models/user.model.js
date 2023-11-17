@@ -3,6 +3,10 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
   },
+  role: {
+    type: String,
+    default: "admin",
+  },
   email: {
     type: String,
   },

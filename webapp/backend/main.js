@@ -1,12 +1,15 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+const bcrypt = require("bcrypt");
 const cors = require("cors");
 const HotelModel = require("./models/hotel.model");
 const UserModel = require("./models/user.model");
+const authRoute = require("./routes/AuthRoutes");
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.use("/auth", authRoute);
 dotenv.config();
 
 //connect to database
@@ -42,9 +45,9 @@ const startServer = async () => {
 
 const createDemoStaffAndHotel = async () => {
   const hotelList = await HotelModel.find({});
-  console.log("👉 : Looking for hotels.");
+  console.log("\n👉 : Looking for hotels.");
   if (hotelList.length === 0) {
-    console.log("😭 : No hotels were found.\n");
+    console.log("😭 : No hotels were found.");
     console.log("👉 : Adding demo hotel.");
     const date = new Date();
     try {
@@ -57,32 +60,34 @@ const createDemoStaffAndHotel = async () => {
         website: "www.merohotelexample.com",
         lastActivated: date.getDate(),
       });
-      console.log(data.getDate());
       await demoHotel.save();
-      console.log(" 🥳: Demo Hotel Created Successfully.");
+      console.log("🥳: Demo Hotel Created Successfully.");
     } catch (e) {
-      console.log(" 😭: Error while creating a demo hotel.");
+      console.log(e);
+      console.log("😭: Error while creating a demo hotel.");
     }
   }
-  console.log("👉 : Looking for staff.");
+  console.log("\n👉 : Looking for staff.");
   const staffList = await UserModel.find({});
   if (staffList.length === 0) {
     console.log("😭: No staff were found.");
     console.log("👉: Adding a demo user.");
+    const demoEncryptedPassword = await bcrypt.hash("admin12345", 10);
     try {
       const newStaff = await UserModel.create({
         name: "Demo User",
         email: "demo@system.mail",
         hotelCode: "001",
         isVerified: true,
-        password: "admin12345678",
+        password: demoEncryptedPassword,
         authToken: "",
         mailedToken: "",
+        role: "admin",
       });
       await newStaff.save();
-      console.log("😁 : New staff added successfully.");
+      console.log("😁 : New staff added successfully.\n");
     } catch (e) {
-      console.log("😭: Error adding new staff.");
+      console.log("😭: Error adding new staff.\n");
     }
   }
 };
