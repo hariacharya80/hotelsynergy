@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import HeaderMenuButton from "./HeaderMenuButton";
 import { useNavigate } from "react-router-dom";
+import { FaGithub } from "react-icons/fa6";
 
 function Header() {
   const headerMenus = [
@@ -11,7 +12,9 @@ function Header() {
   ];
   const [currentMenu, setCurrentMenu] = useState(document.location.pathname);
   const navigate = useNavigate();
-  useEffect(() => {});
+  useEffect(() => {
+    setCurrentMenu(document.location.pathname);
+  }, [document.location.pathname]);
   return (
     <header className="flex justify-between items-center h-[10vh] px-5 py-4 shadow-lg">
       <div
@@ -38,6 +41,18 @@ function Header() {
             />
           );
         })}
+        <button
+          title="View source code"
+          className="text-3xl hover:text-slate-500 transition-colors"
+          onClick={() => {
+            window.open(
+              "https://www.github.com/hariacharya80/hotelsynergy",
+              "_blank"
+            );
+          }}
+        >
+          <FaGithub />
+        </button>
         <button
           onClick={() => {
             setCurrentMenu("/demo");

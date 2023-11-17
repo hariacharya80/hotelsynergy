@@ -7,8 +7,10 @@ function Footer() {
           <span className="text-red-400">Synergy</span>
         </h1>
       </div>
-      <div>some links</div>
-      <div>Copyright &copy; Hari Acharya</div>
+      <div className="text-md font-bold">
+        Designed with <span className="text-rose-500">&hearts;</span> Hari
+        Acharya
+      </div>
     </div>
   );
 }

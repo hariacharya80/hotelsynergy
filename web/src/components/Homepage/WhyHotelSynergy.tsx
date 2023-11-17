@@ -2,6 +2,8 @@ import InfoCard from "./InfoCard";
 import { IoMdCloudDone } from "react-icons/io";
 import { FaGlobe, FaUsers } from "react-icons/fa";
 import { FaHotel } from "react-icons/fa6";
+import { MdInventory2 } from "react-icons/md";
+import { FaMoneyBillWave } from "react-icons/fa";
 
 function WhyHotelSynergy() {
   return (
@@ -35,14 +37,14 @@ function WhyHotelSynergy() {
           info="We got your data safe anywhere & any time."
         />
         <InfoCard
-          title="Cloud Backup"
-          icon={<IoMdCloudDone />}
-          info="We got your data safe anywhere & any time."
+          title="Inventory Management"
+          icon={<MdInventory2 />}
+          info="Don't worry about your stocks or payments."
         />
         <InfoCard
-          title="Cloud Backup"
-          icon={<IoMdCloudDone />}
-          info="We got your data safe anywhere & any time."
+          title="Integrated Payment"
+          icon={<FaMoneyBillWave />}
+          info="Receive payments from any provider."
         />
       </div>
     </section>
