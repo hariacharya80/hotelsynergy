@@ -37,11 +37,8 @@ function Login() {
       setLoading(false);
       return false;
     }
-    const loginResult = await login(loginInfo);
+    await login(loginInfo);
     setLoading(false);
-    if (loginResult) {
-      return navigate(`/${user.role}`);
-    }
   };
   return (
     <section className="absolute w-screen min-h-screen bg-slate-200 flex justify-center">

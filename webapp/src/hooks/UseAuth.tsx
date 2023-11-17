@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { LoginInfoType, SignedInUserType } from "../types/Auth.types";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 function UseAuth() {
   const localAuthRaw = localStorage.getItem("_auth");
+  const navigate = useNavigate();
   let AuthData;
   if (localAuthRaw) {
     AuthData = JSON.parse(localAuthRaw);
@@ -26,7 +28,7 @@ function UseAuth() {
         const data = await request.json();
         localStorage.setItem("_auth", JSON.stringify(data));
         setUser(data);
-        return true;
+        return navigate(`/${data.role}`);
       } else if (request.status === 401) {
         const data = await request.json();
         toast.error(data.msg);
@@ -46,7 +48,29 @@ function UseAuth() {
     }
   };
   const logout = async () => {
-    //logout process
+    try {
+      const request = await fetch(
+        import.meta.env.VITE_BACKEND + "auth/logout",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ email: user.userEmail }),
+        }
+      );
+      if (request.status === 200) {
+        toast.success("User logout successful.");
+        localStorage.removeItem("_auth");
+        return navigate("/");
+      } else {
+        toast.error("Can not logout right now.");
+        return false;
+      }
+    } catch (e) {
+      toast.error("Network Error: Can not logout.");
+      return false;
+    }
   };
 
   return { user, login, logout };
