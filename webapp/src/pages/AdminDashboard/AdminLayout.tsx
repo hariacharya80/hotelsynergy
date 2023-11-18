@@ -22,7 +22,7 @@ function AdminLayout({ children }: AdminLayoutProps) {
   return (
     <section className="absolute top-0 left-0 w-screen h-screen overflow-hidden flex justify-start gap-2">
       <AdminSidebar />
-      <section className="p-2 overflow-y-auto h-screen w-[88vw]">
+      <section className="p-2 overflow-y-auto h-[100vh] w-[88vw]">
         {children}
       </section>
     </section>

@@ -1,5 +1,5 @@
-function StaffSettings() {
+function AdminStaff() {
   return <div>Staff Settings</div>;
 }
 
-export default StaffSettings;
+export default AdminStaff;
