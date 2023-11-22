@@ -14,7 +14,7 @@ function Header() {
   const navigate = useNavigate();
   useEffect(() => {
     setCurrentMenu(document.location.pathname);
-  }, [document.location.pathname]);
+  }, [navigate]);
   return (
     <header className="flex justify-between items-center h-[10vh] px-5 py-4 shadow-lg">
       <div
